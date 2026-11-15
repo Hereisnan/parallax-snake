@@ -1,5 +1,7 @@
 extends Control
 
+signal game_over(final_score: int)
+
 @onready var board_view: Node2D = $BoardView
 @onready var snake = $Snake
 @onready var score_label: Label = $ScoreLabel
@@ -12,6 +14,8 @@ func _ready() -> void:
 	score_label.text = "Score: 0"
 
 	snake.body_changed.connect(_on_snake_body_changed)
+	snake.died.connect(_on_snake_died)
+
 	board_view.set_snake_body(snake.body)
 
 	food_cell = _spawn_food(snake.body)
@@ -28,6 +32,10 @@ func _on_snake_body_changed(new_body: Array[Vector2i]) -> void:
 		snake.grow()
 		food_cell = _spawn_food(new_body)
 		board_view.set_food_cell(food_cell)
+
+
+func _on_snake_died() -> void:
+	game_over.emit(score)
 
 
 func _spawn_food(occupied_cells: Array[Vector2i]) -> Vector2i:
