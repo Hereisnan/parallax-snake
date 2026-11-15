@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1hsinaq2qxu2"]
+
+[ext_resource type="Script" uid="uid://dcba8qmhktrkr" path="res://scripts/pages/game_page.gd" id="1_1275g"]
+[ext_resource type="Script" uid="uid://dqxbocxi1py8n" path="res://scripts/pages/board_view.gd" id="1_yfy51"]
+[ext_resource type="Script" uid="uid://dbs84hj67xwka" path="res://scripts/pages/snake.gd" id="2_kvgj3"]
+
+[node name="GamePage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1275g")
+
+[node name="BoardView" type="Node2D" parent="."]
+script = ExtResource("1_yfy51")
+
+[node name="Snake" type="Node" parent="."]
+script = ExtResource("2_kvgj3")
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
